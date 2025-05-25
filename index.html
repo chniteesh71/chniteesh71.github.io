@@ -10,9 +10,13 @@
 		<!-- 🌩 Lightning background style -->
        <style>
 			#sidebar {
-				position: relative;
-				overflow: hidden;
-			}
+					position: relative;
+					overflow: hidden;
+					height: 100vh;
+					max-height: 100vh;
+					width: 250px;
+					background: #222;
+					}
 
 			.lightning-bolt {
 				position: absolute;
@@ -39,6 +43,31 @@
 				height: 120px;
 				fill: white;
 			}
+			/* Raindrop container */
+			#sidebar .raindrop {
+			position: absolute;
+			top: -20px;  /* start above the sidebar */
+			width: 2px;
+			height: 15px;
+			background: rgba(255, 255, 255, 0.6);
+			border-radius: 50%;
+			animation-name: fall;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			}
+
+			/* Falling animation */
+			@keyframes fall {
+			  0% {
+				transform: translateY(0) translateX(0);
+				opacity: 1;
+			  }
+			  100% {
+				transform: translateY(100vh) translateX(10px); /* 100vh = 100% of viewport height */
+				opacity: 0;
+			  }
+			}
+
 		</style>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -64,6 +93,7 @@
 						<path d="M7 2v10H2l9 10v-10h5L7 2z"/>
 					</svg>
 				</div>
+				
 				
 			</section>
 
@@ -403,6 +433,23 @@
 					});
 					});
               </script>
+			  <script>
+			    const sidebar = document.getElementById('sidebar');
+
+					for(let i = 0; i < 30; i++) {
+					const drop = document.createElement('div');
+					drop.classList.add('raindrop');
+					
+					// Random horizontal start position
+					drop.style.left = Math.random() * 100 + '%';
+					// Random animation duration between 1s and 3s
+					drop.style.animationDuration = (1 + Math.random() * 2) + 's';
+					// Random animation delay to spread drops out
+					drop.style.animationDelay = (Math.random() * 3) + 's';
+
+					sidebar.appendChild(drop);
+					}
+				</script>
 
 	</body>
 </html>
