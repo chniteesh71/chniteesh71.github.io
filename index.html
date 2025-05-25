@@ -6,7 +6,40 @@
 -->
 <html>
 	<head>
-		<title>Niteesh - Portfolio </title>
+		<title>Niteesh Chalamcherla</title>
+		<!-- 🌩 Lightning background style -->
+       <style>
+			#sidebar {
+				position: relative;
+				overflow: hidden;
+			}
+
+			.lightning-bolt {
+				position: absolute;
+				top: 20%;
+				left: 50%;
+				transform: translateX(-50%);
+				opacity: 0;
+				z-index: 100;
+				pointer-events: none;
+			}
+
+			.lightning-flash {
+				opacity: 1;
+				animation: flashFade 0.7s ease-out;
+			}
+
+			@keyframes flashFade {
+				0% { opacity: 1; filter: drop-shadow(0 0 15px rgb(236, 227, 49)); }
+				100% { opacity: 0; filter: none; }
+			}
+
+			.lightning-bolt svg {
+				width: 60px;
+				height: 120px;
+				fill: white;
+			}
+		</style>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -20,12 +53,18 @@
 					<nav>
 						<ul>
 							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">About Me</a></li>
+							<li><a href="#one">Work</a></li>
 							<li><a href="#two">Projects</a></li>
 							<li><a href="#three">Get in touch</a></li>
 						</ul>
 					</nav>
 				</div>
+				<div class="lightning-bolt" id="lightningBolt">
+					<svg viewBox="0 0 24 24">
+						<path d="M7 2v10H2l9 10v-10h5L7 2z"/>
+					</svg>
+				</div>
+				
 			</section>
 
 		<!-- Wrapper -->
@@ -79,11 +118,11 @@
 							<div class="content">
 								<div class="inner">
 									<h2>Certifications</h2>
-									<p>AWS Certified DevOps Engineer - Professional •   March 2025</p>
-									<p>HarshiCorp Certified - Terraform Associate   •   January 2025</p>
-									<p>AWS Certified Solutions Architect - Associate •   June 2024</p>
-									<p>AWS Certified SysOps Administrator - Associate  • May 2024</p>
-									<p>AWS Certified Cloud Practitioner - Foundational • May 2024</p>
+									<p>AWS Certified DevOps Engineer - Professional -   March 2025</p>
+									<p>HarshiCorp Certified - Terraform Associate   -    January 2025</p>
+									<p>AWS Certified Solutions Architect - Associate -   June 2024</p>
+									<p>AWS Certified SysOps Administrator - Associate  - May 2024</p>
+									<p>AWS Certified Cloud Practitioner - Foundational - May 2024</p>
 									<ul class="actions">
 									</ul>
 								</div>
@@ -332,6 +371,38 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+            <script>
+					function triggerLightning() {
+						const bolt = document.getElementById('lightningBolt');
+						bolt.classList.add('lightning-flash');
+						setTimeout(() => bolt.classList.remove('lightning-flash'), 200);
+
+						// Trigger again at random interval
+						const nextStrike = Math.random() * 8000 + 2000; // 2s to 10s
+						setTimeout(triggerLightning, nextStrike);
+					}
+
+					// Start lightning after page loads
+					window.addEventListener('load', () => {
+						setTimeout(triggerLightning, 3000);
+					});
+			 </script>
+			 <script> // Lightning flash trigger function
+					function triggerLightning() {
+					const bolt = document.getElementById('lightningBolt');
+					bolt.classList.add('lightning-flash');
+					setTimeout(() => {
+						bolt.classList.remove('lightning-flash');
+					}, 200); // same as your animation duration
+					}
+
+					// Attach click event to all sidebar links
+					document.querySelectorAll('#sidebar nav ul li a').forEach(link => {
+					link.addEventListener('click', () => {
+						triggerLightning();
+					});
+					});
+              </script>
 
 	</body>
 </html>
