@@ -32,6 +32,8 @@
 				opacity: 1;
 				animation: flashFade 0.7s ease-out;
 			}
+		
+
 
 			@keyframes flashFade {
 				0% { opacity: 1; filter: drop-shadow(0 0 15px rgb(236, 227, 49)); }
@@ -449,6 +451,16 @@
 
 					sidebar.appendChild(drop);
 					}
+				</script>
+				<script> 
+				  const bolt = document.getElementById('lightningBolt');
+
+						setInterval(() => {
+						bolt.classList.add('lightning-flash');
+						setTimeout(() => {
+							bolt.classList.remove('lightning-flash');
+						}, 700);  // matches your animation duration
+						}, 4000);  // every 4 seconds
 				</script>
 
 	</body>
